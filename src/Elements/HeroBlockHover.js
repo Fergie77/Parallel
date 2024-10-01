@@ -83,6 +83,7 @@ export const heroBlockHover = () => {
 
     block.addEventListener('mouseenter', () => {
       tl.play()
+      console.log('mouse enter')
     })
     block.addEventListener('mouseleave', () => {
       tl.reverse()
