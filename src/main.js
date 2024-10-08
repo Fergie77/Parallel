@@ -33,6 +33,7 @@ barba.init({
         }
 
         // Dynamically reload the liquify_custom.js script on each transition
+        // eslint-disable-next-line no-undef
         loadExternalScript(
           '//testparallel.myshopify.com/cdn/shop/t/38/assets/liquify_custom.js?v=99708878005376017301728214743'
         )
