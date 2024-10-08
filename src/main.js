@@ -24,9 +24,18 @@ barba.init({
     {
       namespace: 'product',
       beforeEnter() {
-        document.dispatchEvent(new Event('alpine:init'))
-        // eslint-disable-next-line no-undef
-        Alpine.start()
+        // Avoid initializing Alpine.js twice by checking if it has already been initialized
+        if (!window.Alpine.initialized) {
+          document.dispatchEvent(new Event('alpine:init'))
+          // eslint-disable-next-line no-undef
+          Alpine.start()
+          window.Alpine.initialized = true // Flag that Alpine has started
+        }
+
+        // Dynamically reload the liquify_custom.js script on each transition
+        loadExternalScript(
+          '//testparallel.myshopify.com/cdn/shop/t/38/assets/liquify_custom.js?v=99708878005376017301728214743'
+        )
       },
     },
   ],
