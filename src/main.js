@@ -38,7 +38,6 @@ barba.init({
         )
         // Avoid initializing Alpine.js twice by checking if it has already been initialized
         if (!window.Alpine.initialized) {
-          document.dispatchEvent(new Event('alpine:init'))
           // eslint-disable-next-line no-undef
           Alpine.start()
           window.Alpine.initialized = true // Flag that Alpine has started
