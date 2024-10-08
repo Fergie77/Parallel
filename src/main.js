@@ -9,13 +9,13 @@ import { heroBlockHover } from './Elements/HeroBlockHover'
 
 //navAnimation()
 
-function loadExternalScript(src) {
-  const script = document.createElement('script')
-  script.src = src
-  script.type = 'text/javascript'
-  script.async = true
-  document.body.appendChild(script)
-}
+// function loadExternalScript(src) {
+//   const script = document.createElement('script')
+//   script.src = src
+//   script.type = 'text/javascript'
+//   script.async = true
+//   document.body.appendChild(script)
+// }
 
 barba.init({
   preventRunning: true,
@@ -33,9 +33,9 @@ barba.init({
       namespace: 'product',
       beforeEnter() {
         // Dynamically reload the liquify_custom.js script on each transition
-        loadExternalScript(
-          '//testparallel.myshopify.com/cdn/shop/t/38/assets/liquify_custom.js?v=99708878005376017301728214743'
-        )
+        // loadExternalScript(
+        //   '//testparallel.myshopify.com/cdn/shop/t/38/assets/liquify_custom.js?v=99708878005376017301728214743'
+        // )
         // Avoid initializing Alpine.js twice by checking if it has already been initialized
         if (!window.Alpine.initialized) {
           // eslint-disable-next-line no-undef
