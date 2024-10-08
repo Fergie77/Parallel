@@ -1,5 +1,4 @@
 import barba from '@barba/core'
-//import Alpine from 'alpinejs'
 import gsap from 'gsap'
 
 //import { navAnimation } from './Animations/Nav'
