@@ -1,7 +1,6 @@
 import barba from '@barba/core'
-import Alpine from 'alpinejs'
+//import Alpine from 'alpinejs'
 import gsap from 'gsap'
-import { parallax } from 'parallax-js'
 
 //import { navAnimation } from './Animations/Nav'
 import { numberCounter } from './Animations/NumberCounter'
@@ -9,7 +8,6 @@ import { fadeIn } from './Animations/ScrollTriggered'
 import { splitText } from './Animations/SplitText'
 import { heroBlockHover } from './Elements/HeroBlockHover'
 
-console.log('test')
 //navAnimation()
 
 barba.init({
@@ -18,7 +16,6 @@ barba.init({
     {
       namespace: 'home',
       beforeEnter(data) {
-        console.log('home')
         heroBlockHover()
         fadeIn()
         splitText(data.next.container)
@@ -29,10 +26,8 @@ barba.init({
       namespace: 'product',
       beforeEnter() {
         document.dispatchEvent(new Event('alpine:init'))
+        // eslint-disable-next-line no-undef
         Alpine.start()
-      },
-      afterEnter() {
-        parallax.refresh()
       },
     },
   ],
