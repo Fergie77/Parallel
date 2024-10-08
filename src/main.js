@@ -9,6 +9,14 @@ import { heroBlockHover } from './Elements/HeroBlockHover'
 
 //navAnimation()
 
+function loadExternalScript(src) {
+  const script = document.createElement('script')
+  script.src = src
+  script.type = 'text/javascript'
+  script.async = true
+  document.body.appendChild(script)
+}
+
 barba.init({
   preventRunning: true,
   views: [
@@ -33,7 +41,6 @@ barba.init({
         }
 
         // Dynamically reload the liquify_custom.js script on each transition
-        // eslint-disable-next-line no-undef
         loadExternalScript(
           '//testparallel.myshopify.com/cdn/shop/t/38/assets/liquify_custom.js?v=99708878005376017301728214743'
         )
