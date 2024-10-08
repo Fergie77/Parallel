@@ -1,10 +1,16 @@
 import barba from '@barba/core'
+import Alpine from 'alpinejs'
 import gsap from 'gsap'
+import { parallax } from 'parallax-js'
 
+//import { navAnimation } from './Animations/Nav'
 import { numberCounter } from './Animations/NumberCounter'
 import { fadeIn } from './Animations/ScrollTriggered'
 import { splitText } from './Animations/SplitText'
 import { heroBlockHover } from './Elements/HeroBlockHover'
+
+console.log('test')
+//navAnimation()
 
 barba.init({
   preventRunning: true,
@@ -17,6 +23,16 @@ barba.init({
         fadeIn()
         splitText(data.next.container)
         numberCounter()
+      },
+    },
+    {
+      namespace: 'product',
+      beforeEnter() {
+        document.dispatchEvent(new Event('alpine:init'))
+        Alpine.start()
+      },
+      afterEnter() {
+        parallax.refresh()
       },
     },
   ],
