@@ -1,13 +1,13 @@
 import barba from '@barba/core'
 import gsap from 'gsap'
 
-//import { navAnimation } from './Animations/Nav'
+import { navAnimation } from './Animations/Nav'
 import { numberCounter } from './Animations/NumberCounter'
 import { fadeIn } from './Animations/ScrollTriggered'
 import { splitText } from './Animations/SplitText'
 import { heroBlockHover } from './Elements/HeroBlockHover'
 
-//navAnimation()
+navAnimation()
 
 // function loadExternalScript(src) {
 //   const script = document.createElement('script')
