@@ -1,7 +1,6 @@
 import gsap from 'gsap'
 
 export const navAnimation = () => {
-  console.log('navAnimation')
   const tl = gsap.timeline({ paused: true })
   const navButton = document.querySelector('.nav-menu_button')
   const closeButton = document.querySelector('.nav_close-button')
@@ -12,14 +11,18 @@ export const navAnimation = () => {
   // Convert NodeList to Array and map to get text content
   const navLinksText = Array.from(navLinks).map((link) => link.children[0])
 
-  console.log(navLinksText)
-
   navButton.addEventListener('click', () => {
     tl.play()
   })
 
   closeButton.addEventListener('click', () => {
     tl.reverse()
+  })
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      tl.reverse()
+    })
   })
 
   gsap.set(divider, {

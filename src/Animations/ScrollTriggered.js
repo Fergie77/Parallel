@@ -19,6 +19,7 @@ export const fadeIn = () => {
 
     gsap.set(element, {
       opacity: 0,
+      //yPercent: 50,
     })
 
     const tl = gsap.timeline({ paused: true })
@@ -29,6 +30,7 @@ export const fadeIn = () => {
 
     tl.to(element, {
       opacity: 1,
+      //yPercent: 0,
       duration: 1,
     })
 

@@ -44,6 +44,12 @@ barba.init({
         }
       },
     },
+    {
+      namespace: 'shop',
+      beforeEnter() {
+        heroBlockHover()
+      },
+    },
   ],
   transitions: [
     {
@@ -107,14 +113,25 @@ barba.init({
           }
         )
 
+        // gsap.to('.nav_component-2', {
+        //   backgroundColor: backgroundColour,
+        // })
+
         return gsap.from(data.next.container, {
           y: '100vh',
           duration: 2,
           ease: 'expo.inOut',
+
           onComplete: () => {
             window.scrollTo(0, 0)
             setTimeout(() => {
               data.next.container.classList.remove('fixed')
+              let backgroundColour =
+                data.next.container.querySelector('.section_hero').style
+              console.log(backgroundColour)
+              // gsap.to('.nav_component-2', {
+              //   backgroundColor: backgroundColour,
+              // })
             }, 100)
           },
         })
