@@ -64,7 +64,7 @@ export const heroBlockHover = () => {
     tl.to(
       hoverBackground,
       {
-        scale: 30,
+        scale: 35,
         ease: 'power2.inOut',
         duration: 1,
       },
@@ -83,7 +83,6 @@ export const heroBlockHover = () => {
 
     block.addEventListener('mouseenter', () => {
       tl.play()
-      console.log('mouse enter')
     })
     block.addEventListener('mouseleave', () => {
       tl.reverse()

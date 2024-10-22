@@ -6,7 +6,6 @@ import { numberCounter } from './Animations/NumberCounter'
 import { fadeIn } from './Animations/ScrollTriggered'
 import { splitText } from './Animations/SplitText'
 import { heroBlockHover } from './Elements/HeroBlockHover'
-
 navAnimation()
 
 // function loadExternalScript(src) {
@@ -56,7 +55,6 @@ barba.init({
       name: 'product-transition',
       to: { namespace: ['product'] },
       enter(data) {
-        console.log('product')
         data.next.container.classList.add('fixed')
 
         const gsapFadeIn = data.next.container.querySelectorAll(
@@ -71,8 +69,6 @@ barba.init({
         const gsapLineHeight = data.next.container.querySelectorAll(
           "[data-animation='gsap-line-height']"
         )
-
-        console.log(gsapSlideIn)
 
         gsap.from(gsapFadeIn, {
           opacity: 0,
@@ -113,10 +109,6 @@ barba.init({
           }
         )
 
-        // gsap.to('.nav_component-2', {
-        //   backgroundColor: backgroundColour,
-        // })
-
         return gsap.from(data.next.container, {
           y: '100vh',
           duration: 2,
@@ -126,12 +118,6 @@ barba.init({
             window.scrollTo(0, 0)
             setTimeout(() => {
               data.next.container.classList.remove('fixed')
-              let backgroundColour =
-                data.next.container.querySelector('.section_hero').style
-              console.log(backgroundColour)
-              // gsap.to('.nav_component-2', {
-              //   backgroundColor: backgroundColour,
-              // })
             }, 100)
           },
         })

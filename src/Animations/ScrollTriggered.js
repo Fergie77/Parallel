@@ -19,7 +19,8 @@ export const fadeIn = () => {
 
     gsap.set(element, {
       opacity: 0,
-      //yPercent: 50,
+      yPercent: 20,
+      scale: 0.9,
     })
 
     const tl = gsap.timeline({ paused: true })
@@ -30,9 +31,20 @@ export const fadeIn = () => {
 
     tl.to(element, {
       opacity: 1,
-      //yPercent: 0,
+      yPercent: 0,
       duration: 1,
+      ease: 'power2.inOut',
     })
+
+    tl.to(
+      element,
+      {
+        scale: 1,
+        duration: 1,
+        ease: 'power2.inOut',
+      },
+      '<0.1'
+    )
 
     tl.to(
       textBlocksChildren,
