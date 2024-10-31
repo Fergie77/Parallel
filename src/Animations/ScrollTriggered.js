@@ -19,7 +19,7 @@ export const fadeIn = () => {
 
     gsap.set(element, {
       opacity: 0,
-      yPercent: 20,
+      //yPercent: 20,
       scale: 0.9,
     })
 
@@ -31,7 +31,7 @@ export const fadeIn = () => {
 
     tl.to(element, {
       opacity: 1,
-      yPercent: 0,
+      //yPercent: 0,
       duration: 1,
       ease: 'power2.inOut',
     })
