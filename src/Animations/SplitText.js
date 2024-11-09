@@ -7,6 +7,8 @@ export const splitText = (container) => {
   const text = container.querySelectorAll('[element="split-text"]')
   text.forEach((element) => {
     const splittedText = SplitType.create(element)
+
+    console.log(splittedText)
     // splittedText.lines.forEach((element) => {
     //   //element.style.overflow = 'hidden'
     // })

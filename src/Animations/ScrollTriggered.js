@@ -21,6 +21,7 @@ export const fadeIn = () => {
       opacity: 0,
       //yPercent: 20,
       scale: 0.9,
+      filter: 'blur(20px)',
     })
 
     const tl = gsap.timeline({ paused: true })
@@ -32,6 +33,7 @@ export const fadeIn = () => {
     tl.to(element, {
       opacity: 1,
       //yPercent: 0,
+      filter: 'blur(0px)',
       duration: 1,
       ease: 'power2.inOut',
     })
