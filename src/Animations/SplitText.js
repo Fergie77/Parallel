@@ -5,15 +5,20 @@ import SplitType from 'split-type'
 export const splitText = (container) => {
   gsap.registerPlugin(ScrollTrigger)
   const text = container.querySelectorAll('[element="split-text"]')
-  text.forEach((element) => {
-    const splittedText = SplitType.create(element)
 
-    console.log(splittedText)
-    // splittedText.lines.forEach((element) => {
-    //   //element.style.overflow = 'hidden'
-    // })
+  // Determine if the current device is mobile
+  const isMobile = window.innerWidth <= 768 // Adjust the breakpoint as needed
+
+  text.forEach((element) => {
+    // Skip animation for elements with no-mobile=true on mobile devices
+    if (isMobile && element.getAttribute('no-mobile') === 'true') {
+      return
+    }
+
+    const splittedText = SplitType.create(element)
     const direction = splittedText.elements[0].getAttribute('direction')
     const tl = gsap.timeline({ paused: true })
+
     ScrollTrigger.create({
       trigger: element,
       start: 'top 95%',
@@ -21,9 +26,9 @@ export const splitText = (container) => {
       animation: tl,
       scrub: 3,
     })
+
     tl.from(splittedText.words, {
       y: direction == 'down' ? '-70%' : '70%',
-      // scaleY: 0.5,
       opacity: 0,
       filter: 'blur(20px)',
       stagger: splittedText.words.length > 50 ? 0 : 0.05,
