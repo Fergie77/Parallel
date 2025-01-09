@@ -25,6 +25,7 @@ export const splitText = (container) => {
       end: 'bottom 75%',
       animation: tl,
       scrub: 3,
+      markers: true,
     })
 
     tl.from(splittedText.words, {

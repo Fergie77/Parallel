@@ -1,11 +1,16 @@
 import barba from '@barba/core'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import { navAnimation } from './Animations/Nav'
+import { navAnimation, tl, closeAllDropdowns } from './Animations/Nav'
 import { numberCounter } from './Animations/NumberCounter'
 import { fadeIn } from './Animations/ScrollTriggered'
 import { splitText } from './Animations/SplitText'
 import { heroBlockHover } from './Elements/HeroBlockHover'
+import { ProductImagesSlider } from './Elements/ProductPageSlider'
+import { ProductSlider } from './Elements/ProductSlider'
+import { SubifySubscriptions } from './Elements/SubifySubscriptions'
+
 navAnimation()
 
 // function loadExternalScript(src) {
@@ -26,11 +31,14 @@ barba.init({
         fadeIn()
         splitText(data.next.container)
         numberCounter()
+        ProductSlider(data.next.container)
       },
     },
     {
       namespace: 'product',
-      beforeEnter() {
+      beforeEnter(data) {
+        SubifySubscriptions()
+        ProductImagesSlider(data.next.container)
         // Dynamically reload the liquify_custom.js script on each transition
         // loadExternalScript(
         //   '//testparallel.myshopify.com/cdn/shop/t/38/assets/liquify_custom.js?v=99708878005376017301728214743'
@@ -168,3 +176,12 @@ barba.init({
     },
   ],
 })
+
+barba.hooks.beforeEnter(() => {
+  tl.reverse()
+  closeAllDropdowns()
+})
+
+setTimeout(() => {
+  ScrollTrigger.refresh()
+}, 2000)
