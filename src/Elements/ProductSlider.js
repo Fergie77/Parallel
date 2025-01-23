@@ -72,7 +72,7 @@ export const ProductSlider = (container) => {
           new KeenSlider(slider, {
             slides: {
               perView: 1.2,
-              spacing: 15,
+              //spacing: 15,
               origin: 'center',
             },
             loop: true,

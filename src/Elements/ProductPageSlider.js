@@ -18,7 +18,6 @@ export const ProductImagesSlider = (container) => {
             selector: '.product-image_wrapper',
           })
         )
-        console.log(slider)
       })
     } else if (window.innerWidth >= 768 && keenSliders.length > 0) {
       keenSliders.forEach((sliderInstance) => sliderInstance.destroy())
