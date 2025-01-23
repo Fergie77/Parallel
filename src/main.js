@@ -2,14 +2,17 @@ import barba from '@barba/core'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import { FooterLink } from './Animations/FooterLink'
 import { navAnimation, tl, closeAllDropdowns } from './Animations/Nav'
 import { numberCounter } from './Animations/NumberCounter'
-import { fadeIn } from './Animations/ScrollTriggered'
+import { fadeIn, fadeInSection } from './Animations/ScrollTriggered'
 import { splitText } from './Animations/SplitText'
 import { heroBlockHover } from './Elements/HeroBlockHover'
+import { ProductItem } from './Elements/ProductItem'
 import { ProductImagesSlider } from './Elements/ProductPageSlider'
 import { ProductSlider } from './Elements/ProductSlider'
-import { SubifySubscriptions } from './Elements/SubifySubscriptions'
+
+//import { SubifySubscriptions } from './Elements/SubifySubscriptions'
 
 navAnimation()
 
@@ -31,13 +34,19 @@ barba.init({
         fadeIn()
         splitText(data.next.container)
         numberCounter()
+        ProductItem()
+
+        FooterLink()
+        fadeInSection()
+      },
+      afterEnter(data) {
         ProductSlider(data.next.container)
       },
     },
     {
       namespace: 'product',
       beforeEnter(data) {
-        SubifySubscriptions()
+        //    SubifySubscriptions()
         ProductImagesSlider(data.next.container)
         // Dynamically reload the liquify_custom.js script on each transition
         // loadExternalScript(
@@ -135,31 +144,59 @@ barba.init({
       name: 'general-transition',
 
       enter(data) {
-        gsap.fromTo(
+        const tl = gsap.timeline()
+
+        // const images = []
+
+        // data.next.container.querySelectorAll('img').forEach((img) => {
+        //   images.push(img)
+        // })
+
+        // gsap.set(images, {
+        //   scale: 0.9,
+        //   opacity: 0,
+        // })
+
+        tl.fromTo(
           data.current.container,
           {
             filter: 'blur(0px)',
             opacity: '1',
-            scale: '1',
           },
           {
-            filter: 'blur(10px)',
+            filter: 'blur(20px)',
             opacity: 0,
             duration: 2,
           }
         )
-        gsap.fromTo(
+
+        tl.fromTo(
           data.next.container,
           {
             opacity: '0',
+            filter: 'blur(20px)',
           },
           {
             opacity: '1',
-            scale: '1',
-            delay: 1,
+            filter: 'blur(0px)',
+
             duration: 1.5,
-          }
+          },
+          '<1'
         )
+
+        // tl.to(
+        //   images,
+        //   {
+        //     opacity: 1,
+        //     scale: 1,
+        //     duration: 2,
+        //     stagger: 0.05,
+        //     ease: 'expo.inOut',
+        //   },
+        //   '<'
+        // )
+
         data.next.container.classList.add('fixed')
 
         return gsap.from(data.next.container, {
@@ -180,8 +217,14 @@ barba.init({
 barba.hooks.beforeEnter(() => {
   tl.reverse()
   closeAllDropdowns()
+
+  setTimeout(() => {
+    ScrollTrigger.refresh()
+  }, 2000)
 })
 
-setTimeout(() => {
-  ScrollTrigger.refresh()
-}, 2000)
+barba.hooks.afterEnter(() => {
+  setTimeout(() => {
+    window.SealSubs.hardRefresh()
+  }, 5000)
+})
