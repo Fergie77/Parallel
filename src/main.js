@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FooterLink } from './Animations/FooterLink'
 import { navAnimation, tl, closeAllDropdowns } from './Animations/Nav'
 import { numberCounter } from './Animations/NumberCounter'
+import { numberCounterInitialLoad } from './Animations/NumberCounterInitialLoad'
 import { fadeIn, fadeInSection } from './Animations/ScrollTriggered'
 import { splitText } from './Animations/SplitText'
 import { heroBlockHover } from './Elements/HeroBlockHover'
@@ -24,17 +25,27 @@ navAnimation()
 //   document.body.appendChild(script)
 // }
 
+numberCounterInitialLoad()
+  .then(() => {
+    initializePage()
+  })
+  .catch((error) => {
+    console.error('Number counter failed to load:', error)
+    initializePage() // Optionally initialize the page even if the counter fails
+  })
+
 /**
  * Initializes the page mask animation.
  * Barba is initialized halfway through the mask animation.
  */
 function initializePage() {
   const pageMask = document.querySelector('.page-mask')
+
   if (pageMask) {
     pageMask.classList.add('mask-animation')
 
-    // Initialize Barba halfway through the animation (e.g., after 1 second)
-    const halfDuration = 250 // 1000ms = 1 second
+    // Initialize Barba halfway through the animation (e.g., after 250ms)
+    const halfDuration = 250
     setTimeout(() => {
       initializeBarba()
       document.querySelector('.page-wrapper').classList.remove('initial-load')
@@ -274,4 +285,4 @@ function initializeBarba() {
 }
 
 // Run the initialization sequence
-initializePage()
+// initializePage() // Removed from here
