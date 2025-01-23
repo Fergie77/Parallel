@@ -283,6 +283,3 @@ function initializeBarba() {
     }, 5000)
   })
 }
-
-// Run the initialization sequence
-// initializePage() // Removed from here
