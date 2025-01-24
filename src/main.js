@@ -13,17 +13,7 @@ import { ProductItem } from './Elements/ProductItem'
 import { ProductImagesSlider } from './Elements/ProductPageSlider'
 import { ProductSlider } from './Elements/ProductSlider'
 
-//import { SubifySubscriptions } from './Elements/SubifySubscriptions'
-
 navAnimation()
-
-// function loadExternalScript(src) {
-//   const script = document.createElement('script')
-//   script.src = src
-//   script.type = 'text/javascript'
-//   script.async = true
-//   document.body.appendChild(script)
-// }
 
 numberCounterInitialLoad()
   .then(() => {
@@ -45,7 +35,7 @@ function initializePage() {
     pageMask.classList.add('mask-animation')
 
     // Initialize Barba halfway through the animation (e.g., after 250ms)
-    const halfDuration = 250
+    const halfDuration = 0
     setTimeout(() => {
       initializeBarba()
       document.querySelector('.page-wrapper').classList.remove('initial-load')
