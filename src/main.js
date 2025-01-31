@@ -133,7 +133,7 @@ function initializeBarba() {
 
           gsap.from(gsapFadeIn, {
             opacity: 0,
-            duration: 1,
+            duration: 2,
             stagger: 0.05,
             ease: 'expo.inOut',
             delay: 0.5,

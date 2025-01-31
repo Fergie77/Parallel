@@ -65,56 +65,40 @@ export const ProductSlider = (container) => {
   let keenSliders = []
 
   const initializeSliders = () => {
-    if (window.innerWidth < 768 && keenSliders.length === 0) {
-      const sliders = container.querySelectorAll('.products_collection-list')
-      sliders.forEach((slider) => {
-        keenSliders.push(
-          new KeenSlider(slider, {
-            slides: {
-              perView: 1.2,
-              //spacing: 15,
-              origin: 'center',
-            },
-            loop: true,
-            selector: '.products_collection-item',
-          })
-        )
-      })
-    } else if (window.innerWidth >= 768) {
-      const sliders = container.querySelectorAll('.products_collection-list')
-      sliders.forEach((slider) => {
-        const keenSliderInstance = new KeenSlider(
-          slider,
-          {
-            slides: {
-              perView: 4.3,
-              spacing: 0,
-            },
-            loop: true,
-            selector: '.products_collection-item',
+    const sliders = container.querySelectorAll('.products_collection-list')
+    sliders.forEach((slider) => {
+      const keenSliderInstance = new KeenSlider(
+        slider,
+        {
+          slides: {
+            perView: window.innerWidth < 768 ? 1.2 : 4.3,
+            spacing: window.innerWidth < 768 ? undefined : 0,
+            origin: window.innerWidth < 768 ? 'center' : undefined,
           },
-          [WheelControls]
-        )
+          loop: true,
+          selector: '.products_collection-item',
+        },
+        window.innerWidth >= 768 ? [WheelControls] : []
+      )
 
-        // Attach navigation to corresponding arrows
-        const leftArrow = slider
-          .closest('.container-large')
-          .querySelector('[slider="left-arrow"]')
-        const rightArrow = slider
-          .closest('.container-large')
-          .querySelector('[slider="right-arrow"]')
-        console.log(leftArrow)
-        if (leftArrow) {
-          leftArrow.addEventListener('click', () => keenSliderInstance.prev())
-        }
+      // Attach navigation to corresponding arrows
+      const leftArrow = slider
+        .closest('.container-large')
+        .querySelector('[slider="left-arrow"]')
+      const rightArrow = slider
+        .closest('.container-large')
+        .querySelector('[slider="right-arrow"]')
 
-        if (rightArrow) {
-          rightArrow.addEventListener('click', () => keenSliderInstance.next())
-        }
+      if (leftArrow) {
+        leftArrow.addEventListener('click', () => keenSliderInstance.prev())
+      }
 
-        keenSliders.push(keenSliderInstance)
-      })
-    }
+      if (rightArrow) {
+        rightArrow.addEventListener('click', () => keenSliderInstance.next())
+      }
+
+      keenSliders.push(keenSliderInstance)
+    })
   }
 
   // Initial check
