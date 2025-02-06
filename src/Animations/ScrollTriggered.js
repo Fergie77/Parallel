@@ -1,14 +1,14 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-export const fadeInSection = () => {
+export const fadeInSection = (data) => {
   gsap.registerPlugin(ScrollTrigger)
 
   // Inline check for screen width
   const duration = window.innerWidth < 400 ? 1 : 1.5
 
-  const animatedElements = document.querySelectorAll('section')
-
+  const animatedElements = data.next.container.querySelectorAll('section')
+  console.log(data)
   animatedElements.forEach((element) => {
     gsap.set(element.firstChild, {
       opacity: 0,

@@ -79,13 +79,13 @@ function initializeBarba() {
           splitText(data.next.container)
           numberCounter()
           ProductItem()
-
-          FooterLink()
-          fadeInSection()
-        },
-        afterEnter(data) {
           ProductSlider(data.next.container)
+          FooterLink()
+          fadeInSection(data)
         },
+        // afterEnter(data) {
+
+        // },
       },
       {
         namespace: 'product',
