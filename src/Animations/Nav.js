@@ -43,7 +43,7 @@ export const navAnimation = () => {
     navLinksText,
     {
       yPercent: 150,
-      stagger: 0.1,
+      stagger: 0.025,
       duration: 1,
       ease: 'power2.inOut',
     },
