@@ -33,7 +33,7 @@ export const navAnimation = () => {
     divider,
     {
       width: '100%',
-      duration: 1,
+      duration: 0.8,
       ease: 'power2.inOut',
     },
     '<0.2'
