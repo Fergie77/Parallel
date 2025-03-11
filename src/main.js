@@ -2,6 +2,7 @@ import barba from '@barba/core'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import { Dropdown } from './Animations/Dropdown'
 import { FooterLink } from './Animations/FooterLink'
 import { navAnimation, tl, closeAllDropdowns } from './Animations/Nav'
 import { numberCounter } from './Animations/NumberCounter'
@@ -102,6 +103,7 @@ function initializeBarba() {
             //   Alpine.start()
             window.Alpine.initialized = true // Flag that Alpine has started
           }
+          Dropdown(data.next.container)
         },
       },
       {
