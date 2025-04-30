@@ -7,7 +7,7 @@ export const numberCounterInitialLoad = () => {
     const today = new Date().toDateString()
 
     // Determine animation duration based on previous visits
-    const animationDuration = lastVisit === today ? 0.5 : 2
+    const animationDuration = lastVisit === today ? 0.5 : 1.2
 
     const countUp = new CountUp('initial-odometer', 100, {
       startVal: 0,
