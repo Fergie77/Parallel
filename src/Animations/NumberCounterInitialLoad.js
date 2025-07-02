@@ -29,7 +29,6 @@ export const numberCounterInitialLoad = () => {
 
     if (!countUp.error) {
       countUp.start(() => {
-        console.log('test')
         document.querySelector('.mask-text_square').classList.add('has-loaded')
         setTimeout(() => {
           resolve()
