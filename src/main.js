@@ -212,7 +212,7 @@ function initializeBarba() {
             {
               filter: 'blur(20px)',
               opacity: 0,
-              duration: 2,
+              duration: 1,
             }
           )
 
@@ -226,7 +226,7 @@ function initializeBarba() {
               opacity: '1',
               filter: 'blur(0px)',
 
-              duration: 1.5,
+              duration: 0.25,
             },
             '<1'
           )
