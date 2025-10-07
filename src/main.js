@@ -212,7 +212,7 @@ function initializeBarba() {
             {
               filter: 'blur(20px)',
               opacity: 0,
-              duration: 1,
+              duration: 0.5,
             }
           )
 
@@ -228,7 +228,7 @@ function initializeBarba() {
 
               duration: 0.25,
             },
-            '<1'
+            '<0.5'
           )
 
           // tl.to(
