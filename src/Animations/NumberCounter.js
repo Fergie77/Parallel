@@ -9,11 +9,11 @@ export const numberCounter = () => {
   const day = today.getDate()
 
   // Calculate the start value based on the day
-  const startVal = day * 100 + 12
+  const startVal = day * 200 + 12
 
   // Check if the current time is between 8 AM and 6 PM
   if (currentHour >= 8 && currentHour < 18) {
-    const countUp = new CountUp('odometer', 5235, {
+    const countUp = new CountUp('odometer', 10235, {
       startVal: startVal,
       duration: 70000,
       useGrouping: false,
